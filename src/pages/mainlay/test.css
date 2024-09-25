@@ -1,0 +1,19 @@
+#progress {
+    width: 90%;
+    height: 5px;
+    border-radius: 10px;
+    background-color: #ccc;
+    position: relative;
+    margin-top: 10px; /* Add margin for better spacing */
+    cursor: pointer;
+}
+
+#progress-bar {
+    height: 100%;
+    background-color: blue;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    cursor: pointer;
+}
