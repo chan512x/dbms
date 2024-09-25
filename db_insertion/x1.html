@@ -1,0 +1,86 @@
+    <html >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+<div style="display:flex;justify-content:center;align-items:center;">
+    <div style="width:400px;height:300px;">
+        <div data-video="kyNYqH2zoiE" data-autoplay="0" data-loop="1" id="youtube-audio1"></div>
+        <div data-video="cbZ7V2ifh20" data-autoplay="0" data-loop="1" id="youtube-audio2"></div>
+        <div data-video="kyNYqH2zoiE" data-autoplay="0" data-loop="1" id="youtube-audio4"></div>
+        <div style="clear:both;margin:10px;text-align:center">
+            <p>The audio player is created with the YouTube API.</p>
+            <p>Read Tutorial: <a href="http://www.labnol.org/internet/youtube-audio-player/26740/">YouTube Audio Player</a></p>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    // 2. This code loads the IFrame Player API code asynchronously.
+var tag = document.createElement('script');
+const express = require('express'); 
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+// 3. This function creates an <iframe> (and YouTube player)
+//    after the API code downloads.
+var player1, player2, player3, player4;
+
+function onYouTubeIframeAPIReady() {    
+
+  
+  var ctrlq4 = document.getElementById("youtube-audio4");
+  ctrlq4.innerHTML = '<img id="youtube-icon4" src=""/><div id="youtube-player4"></div>';
+  ctrlq4.style.cssText = 'width:150px;margin:2em auto;cursor:pointer;cursor:hand;display:none';
+  ctrlq4.onclick = toggleAudio4;
+
+  player4 = new YT.Player('youtube-player4', {
+    height: '0',
+    width: '0',
+    videoId: ctrlq4.dataset.video,
+    playerVars: {
+      autoplay: ctrlq4.dataset.autoplay,
+      loop: ctrlq4.dataset.loop,
+    },
+    events: {
+      'onReady': onPlayerReady4,
+      'onStateChange': onPlayerStateChange4
+    }
+  });
+}
+
+
+function togglePlayButton4(play) {
+  document.getElementById("youtube-icon4").src = play ? "https://icon-library.com/icon/play-pause-icon-4.html.html" : "https://icon-library.com/icon/play-pause-icon-4.html.html";
+}
+
+function toggleAudio4() {
+  if (player4.getPlayerState() == 1 || player4.getPlayerState() == 3) {
+    player4.pauseVideo();
+    togglePlayButton4(false);
+  } else {
+    player4.playVideo();
+    togglePlayButton4(true);
+  }
+}
+
+
+
+function onPlayerReady4(event) {
+  player4.setPlaybackQuality("small");
+  document.getElementById("youtube-audio4").style.display = "block";
+  togglePlayButton4(player4.getPlayerState() !== 5);
+}
+
+function onPlayerStateChange4(event) {
+  if (event.data === 0) {
+    togglePlayButton4(false);
+  }
+}
+
+    </script>
+</html>

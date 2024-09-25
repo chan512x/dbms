@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "mariadb": "^3.2.3",
+    "youtube-search-api": "^1.2.1"
+  }
+}
