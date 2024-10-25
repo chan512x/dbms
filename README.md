@@ -32,6 +32,10 @@ This application is a comprehensive software system designed to manage and organ
       
 #### Backend
         Modify the connector config in backend/app/__init__.py
+
+#### Frontend
+        npm start
+
         
 ## Run Locally
 
